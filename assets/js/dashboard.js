@@ -1,24 +1,40 @@
-const session = JSON.parse(
-  sessionStorage.getItem("nexora-session")
-);
+// NEXORA DASHBOARD AUTH
 
-if (!session) {
-  window.location.href = "login.html";
-} else {
-  const userName = document.getElementById("userName");
-  const profileName = document.getElementById("profileName");
-  const userEmail = document.getElementById("userEmail");
-  const userAvatar = document.getElementById("userAvatar");
+async function loadDashboard() {
+  const { data: { user }, error } =
+    await supabaseClient.auth.getUser();
 
-  userName.textContent = session.name;
-  profileName.textContent = session.name;
-  userEmail.textContent = session.email;
-  userAvatar.textContent = session.name.charAt(0).toUpperCase();
+  if (error || !user) {
+    window.location.replace("login.html");
+    return;
+  }
+
+  const name =
+    user.user_metadata?.full_name ||
+    user.email?.split("@")[0] ||
+    "User";
+
+  document.getElementById("userName").textContent = name;
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("userEmail").textContent = user.email || "";
+  document.getElementById("userAvatar").textContent =
+    name.charAt(0).toUpperCase();
+
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  logoutBtn.addEventListener("click", async () => {
+    logoutBtn.disabled = true;
+
+    const { error } = await supabaseClient.auth.signOut();
+
+    if (error) {
+      logoutBtn.disabled = false;
+      alert("Logout gagal: " + error.message);
+      return;
+    }
+
+    window.location.replace("login.html");
+  });
 }
 
-const logoutBtn = document.getElementById("logoutBtn");
-
-logoutBtn.addEventListener("click", () => {
-  sessionStorage.removeItem("nexora-session");
-  window.location.href = "login.html";
-});
+loadDashboard();
