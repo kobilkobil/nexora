@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - NEXORA</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body class="dashboard-body">
+
+  <aside class="sidebar">
+    <h2>NEXORA</h2>
+
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="#profile">Profile</a>
+      <a href="#activity">Activity</a>
+    </nav>
+
+    <button id="logoutBtn">Logout</button>
+  </aside>
+
+  <main class="dashboard-main">
+
+    <header class="dashboard-header">
+      <h1>Dashboard</h1>
+      <p>Welcome back, <span id="userName">User</span>!</p>
+    </header>
+
+    <section class="welcome-card">
+      <h2>Welcome to NEXORA</h2>
+      <p>Your digital journey starts here.</p>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <h3>01</h3>
+        <p>Account Status</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Active</h3>
+        <p>Your Account</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Free</h3>
+        <p>Membership</p>
+      </div>
+    </section>
+
+    <section id="profile" class="profile-section">
+      <h2>My Profile</h2>
+      <div class="profile-card">
+        <div id="userAvatar" class="avatar">N</div>
+        <div>
+          <h3 id="profileName">User</h3>
+          <p id="userEmail">email@example.com</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="activity" class="activity-section">
+      <h2>Recent Activity</h2>
+      <div class="activity-card">
+        <p>Welcome to your NEXORA dashboard!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

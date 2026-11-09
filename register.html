@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - NEXORA</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <main class="auth-container">
+    <h1>NEXORA</h1>
+    <h2>Create Account</h2>
+    <p>Join the NEXORA platform</p>
+
+    <form id="registerForm">
+      <input id="registerName" type="text" placeholder="Full Name" required>
+      <input id="registerEmail" type="email" placeholder="Email" required>
+      <input id="registerPassword" type="password" placeholder="Password (minimum 8 characters)" minlength="8" required>
+      <button type="submit">Register</button>
+    </form>
+
+    <p id="registerMessage"></p>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+    <a href="index.html">Back to Home</a>
+  </main>
+
+  <script src="auth.js"></script>
+</body>
+</html>
